@@ -1,0 +1,38 @@
+---
+import Reveal from "../ui/Reveal.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const principles = [
+  { number: "01", text: "Good software starts with **good thinking**." },
+  { number: "02", text: "**Simple systems** scale better." },
+  { number: "03", text: "AI should **amplify** engineers, not replace them." },
+  { number: "04", text: "Ship **→** learn **→** improve." },
+];
+
+const highlight = (text: string) =>
+  text.replace(/\*\*(.+?)\*\*/g, '<span class="text-gradient">$1</span>');
+---
+
+<section class="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
+  <Reveal>
+    <SectionHeading eyebrow="Principles" title="What I believe." />
+  </Reveal>
+
+  <div class="mt-6">
+    {
+      principles.map((principle, i) => (
+        <Reveal delay={i * 100}>
+          <div class="border-b border-line py-8 sm:py-10">
+            <div class="flex items-baseline gap-6 sm:gap-10">
+              <span class="font-mono text-xs text-fg-muted">{principle.number}</span>
+              <p
+                class="font-heading text-2xl leading-snug font-semibold tracking-tight text-balance text-fg sm:text-3xl lg:text-4xl"
+                set:html={highlight(principle.text)}
+              />
+            </div>
+          </div>
+        </Reveal>
+      ))
+    }
+  </div>
+</section>

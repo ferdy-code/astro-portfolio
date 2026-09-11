@@ -1,0 +1,77 @@
+---
+import { cn } from "../../lib/utils";
+
+interface Props {
+  variant?: "primary" | "ghost";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit";
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  type = "button",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const sizes = {
+  sm: "h-8 px-3 text-xs rounded-md",
+  md: "h-10 px-5 text-sm rounded-lg",
+  lg: "h-12 px-7 text-base rounded-lg",
+};
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : type}
+  class:list={[cn("inline-flex cursor-pointer items-center justify-center gap-2 font-heading font-medium tracking-wide transition-all duration-200 select-none", sizes[size]), variant === "primary" ? "btn-primary" : "btn-ghost", className]}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn-primary {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--color-surface-2), var(--color-surface-2)) padding-box,
+      linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-cyan) 100%) border-box;
+    color: var(--color-fg);
+  }
+
+  .btn-primary:hover {
+    box-shadow:
+      0 0 24px var(--color-glow),
+      0 0 8px rgb(34 211 238 / 0.12);
+    filter: brightness(1.08);
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--color-line);
+    background: rgb(255 255 255 / 0.02);
+    color: var(--color-fg-muted);
+  }
+
+  .btn-ghost:hover {
+    border-color: rgb(255 255 255 / 0.16);
+    background: rgb(255 255 255 / 0.05);
+    color: var(--color-fg);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost:active {
+    transform: translateY(0);
+  }
+</style>

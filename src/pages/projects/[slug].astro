@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from "astro:content";
+import ArrowLeft from "@lucide/astro/icons/arrow-left";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TechTag from "../../components/ui/TechTag.astro";
+import SocialIcon from "../../components/ui/SocialIcon.astro";
+import GlowLine from "../../components/visuals/GlowLine.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} — Case Study · Alex Morgan`} description={entry.data.description}>
+  <main id="main" class="relative mx-auto max-w-3xl px-6 pt-32 pb-24">
+    <a
+      href="/#projects"
+      class="inline-flex items-center gap-2 font-mono text-xs tracking-wide text-fg-muted transition-colors hover:text-fg"
+    >
+      <ArrowLeft size={14} />
+      Back to projects
+    </a>
+
+    <header class="mt-10">
+      <p class="font-mono text-xs font-medium tracking-[0.25em] text-accent-cyan uppercase">
+        Case Study — {entry.data.number}
+      </p>
+      <h1 class="mt-4 font-heading text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
+        {entry.data.title}
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-pretty text-fg-muted">
+        {entry.data.description}
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        {entry.data.tags.map((tag) => <TechTag>{tag}</TechTag>)}
+      </div>
+
+      <div class="mt-6">
+        <SocialIcon
+          name="github"
+          label={`${entry.data.title} on GitHub`}
+          href={entry.data.github}
+        />
+      </div>
+
+      <div class="mt-12">
+        <GlowLine />
+      </div>
+    </header>
+
+    <div class="case-study mt-4">
+      <Content />
+    </div>
+  </main>
+</BaseLayout>

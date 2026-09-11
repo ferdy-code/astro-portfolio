@@ -1,0 +1,88 @@
+---
+import GlassPanel from "../ui/GlassPanel.astro";
+import TechTag from "../ui/TechTag.astro";
+---
+
+<div aria-hidden="true" class="relative mx-auto aspect-[4/5] w-full max-w-md">
+  <div
+    class="absolute inset-8 rounded-full bg-accent/15 blur-[90px]"
+  >
+  </div>
+
+  <div
+    class="absolute inset-x-6 inset-y-0 overflow-hidden rounded-2xl border border-line bg-gradient-to-b from-surface-2/80 to-ink-2/40"
+  >
+    <svg viewBox="0 0 200 250" class="absolute inset-x-0 bottom-0 h-full w-full" fill="none" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="portrait-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3B82F6" stop-opacity="0.45"></stop>
+          <stop offset="1" stop-color="#22D3EE" stop-opacity="0.15"></stop>
+        </linearGradient>
+      </defs>
+      <circle cx="100" cy="92" r="40" fill="url(#portrait-grad)"></circle>
+      <path
+        d="M100 142c-46 0-74 32-78 76v32h156v-32c-4-44-32-76-78-76Z"
+        fill="url(#portrait-grad)"></path>
+    </svg>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgb(255_255_255/0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgb(255_255_255/0.03)_1px,transparent_1px)] bg-[size:36px_36px]">
+    </div>
+  </div>
+
+  <GlassPanel class="absolute -left-4 top-10 w-44 animate-float p-3 sm:-left-8">
+    <div class="font-mono text-[10px] leading-[1.35]">
+      <p>
+        <span class="text-accent-cyan">const</span>
+        <span class="text-fg">ship</span>
+        <span class="text-fg-muted">=</span>
+        <span class="text-accent">async</span>
+        <span class="text-fg-muted">() =&gt; {"{"}</span>
+      </p>
+      <p class="pl-3 text-fg-muted">await <span class="text-accent-cyan">build</span>(idea);</p>
+      <p><span class="text-fg-muted">{"}"};</span></p>
+    </div>
+  </GlassPanel>
+
+  <GlassPanel class="absolute -right-2 top-1/4 w-36 animate-float-slow p-3 sm:-right-6" style="animation-delay:-3s;">
+    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">Architecture</p>
+    <div class="mt-2 flex items-center gap-1.5">
+      <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+      <span class="h-px flex-1 bg-accent/30"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-accent-cyan"></span>
+      <span class="h-px flex-1 bg-accent/30"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+    </div>
+    <div class="mt-2 flex justify-between font-mono text-[8px] tracking-wider text-fg-muted uppercase">
+      <span>api</span><span>queue</span><span>db</span>
+    </div>
+  </GlassPanel>
+
+  <GlassPanel class="absolute bottom-16 -left-2 w-40 animate-float-slow p-3 sm:-left-6" style="animation-delay:-1.5s;">
+    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">Deploys / wk</p>
+    <svg viewBox="0 0 120 32" class="mt-1.5 h-8 w-full" fill="none" preserveAspectRatio="none">
+      <polyline
+        points="0,26 15,24 30,25 45,18 60,20 75,12 90,14 105,7 120,9"
+        stroke="#22D3EE"
+        stroke-width="1.5"></polyline>
+      <polyline
+        points="0,26 15,24 30,25 45,18 60,20 75,12 90,14 105,7 120,9 120,32 0,32"
+        fill="url(#spark-fill)"
+        opacity="0.4"></polyline>
+      <defs>
+        <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#22D3EE" stop-opacity="0.4"></stop>
+          <stop offset="1" stop-color="#22D3EE" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+    <p class="mt-1 font-mono text-[10px] text-accent-cyan">+124%</p>
+  </GlassPanel>
+
+  <GlassPanel class="absolute -bottom-4 right-4 animate-float p-3" style="animation-delay:-5s;">
+    <div class="grid grid-cols-2 gap-1.5">
+      <TechTag class="!text-[9px]">TypeScript</TechTag>
+      <TechTag class="!text-[9px]">React</TechTag>
+      <TechTag class="!text-[9px]">Node.js</TechTag>
+      <TechTag class="!text-[9px]">PostgreSQL</TechTag>
+    </div>
+  </GlassPanel>
+</div>

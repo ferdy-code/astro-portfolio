@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces — near-black charcoal base, dark graphite panels */
+  --color-ink: #0a0b0e;
+  --color-ink-2: #0d0f14;
+  --color-surface: #111318;
+  --color-surface-2: #15181f;
+
+  /* Accents — electric blue → cyan gradient pair */
+  --color-accent: #3b82f6;
+  --color-accent-cyan: #22d3ee;
+
+  /* Text */
+  --color-fg: #e8eaed;
+  --color-fg-muted: #8b93a1;
+
+  /* Thin 1px border system + restrained glow */
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-glow: rgb(59 130 246 / 0.15);
+
+  /* Typography */
+  --font-heading: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Motion tokens */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-slow: float 12s ease-in-out infinite;
+  --animate-node-glow: node-glow 6s ease-in-out infinite;
+  --animate-dash-flow: dash-flow 16s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes node-glow {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes dash-flow {
+    to {
+      stroke-dashoffset: -180;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(59 130 246 / 0.35);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 8px;
+    border: 2px solid var(--color-ink);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255 255 255 / 0.14);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Gradient text for key headline words */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--color-accent), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Case study prose — global because MDX-rendered children carry no scope attributes */
+.case-study h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+}
+
+.case-study h2::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-cyan));
+}
+
+.case-study p {
+  margin-top: 1.25rem;
+  line-height: 1.75;
+  color: var(--color-fg-muted);
+}
+
+.case-study strong {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+
+.case-study ul {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.625rem;
+}
+
+.case-study li {
+  position: relative;
+  padding-left: 1.25rem;
+  line-height: 1.65;
+  color: var(--color-fg-muted);
+}
+
+.case-study li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.5rem;
+  height: 2px;
+  background: var(--color-accent-cyan);
+}
+
+.case-study a {
+  color: var(--color-accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.case-study code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  background: rgb(255 255 255 / 0.03);
+  color: var(--color-accent-cyan);
+}
+
+.case-study pre code {
+  display: block;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Scroll-triggered reveal (driven by ui/Reveal.astro).
+   Hidden state only applies when JS is available (html.js), so content
+   stays visible without JavaScript or if the observer never runs. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

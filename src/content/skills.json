@@ -1,0 +1,50 @@
+[
+  {
+    "id": "frontend",
+    "category": "Frontend",
+    "icon": "monitor",
+    "items": [
+      { "name": "TypeScript", "meta": "primary", "years": 5 },
+      { "name": "React", "meta": "primary", "years": 5 },
+      { "name": "Astro", "meta": "primary", "years": 2 },
+      { "name": "Tailwind CSS", "meta": "primary", "years": 4 },
+      { "name": "Vue", "meta": "exploring", "years": 1 }
+    ]
+  },
+  {
+    "id": "backend",
+    "category": "Backend",
+    "icon": "server",
+    "items": [
+      { "name": "Node.js", "meta": "primary", "years": 5 },
+      { "name": "PostgreSQL", "meta": "primary", "years": 4 },
+      { "name": "GraphQL", "meta": "primary", "years": 3 },
+      { "name": "Redis", "meta": "primary", "years": 3 },
+      { "name": "Go", "meta": "exploring", "years": 1 }
+    ]
+  },
+  {
+    "id": "infrastructure",
+    "category": "Infrastructure",
+    "icon": "cloud",
+    "items": [
+      { "name": "Docker", "meta": "primary", "years": 4 },
+      { "name": "AWS", "meta": "primary", "years": 3 },
+      { "name": "Vercel", "meta": "primary", "years": 4 },
+      { "name": "Cloudflare", "meta": "primary", "years": 2 },
+      { "name": "Terraform", "meta": "exploring", "years": 1 }
+    ]
+  },
+  {
+    "id": "ai-development",
+    "category": "AI & Development",
+    "icon": "sparkles",
+    "items": [
+      { "name": "OpenAI API", "meta": "primary", "years": 2 },
+      { "name": "Claude", "meta": "primary", "years": 2 },
+      { "name": "RAG pipelines", "meta": "exploring", "years": 1 },
+      { "name": "LangChain", "meta": "exploring", "years": 1 },
+      { "name": "Prompt engineering", "meta": "primary", "years": 2 }
+    ]
+  }
+]

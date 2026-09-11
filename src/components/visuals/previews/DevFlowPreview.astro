@@ -1,0 +1,42 @@
+---
+import { cn } from "../../../lib/utils";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const lines = [
+  { dot: "bg-emerald-400", text: "build", detail: "completed in 1.2s" },
+  { dot: "bg-emerald-400", text: "test", detail: "42 passed, 0 failed" },
+  { dot: "bg-accent-cyan", text: "deploy", detail: "pushing to edge…" },
+];
+---
+
+<div aria-hidden="true" class={cn("flex h-full flex-col rounded-md bg-ink/80 p-3 font-mono text-[9px] leading-relaxed", className)}>
+  <div class="flex items-center gap-1.5 border-b border-line pb-2">
+    <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
+    <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
+    <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
+    <span class="ml-2 text-fg-muted">devflow — deploy.yaml</span>
+  </div>
+
+  <div class="mt-2 flex-1 space-y-1.5">
+    {
+      lines.map((line) => (
+        <p class="flex items-center gap-2">
+          <span class:list={["h-1.5 w-1.5 shrink-0 rounded-full", line.dot]} />
+          <span class="text-fg">[{line.text}]</span>
+          <span class="text-fg-muted">{line.detail}</span>
+        </p>
+      ))
+    }
+  </div>
+
+  <p class="flex items-center gap-2 border-t border-line pt-2">
+    <span class="text-accent-cyan">➜</span>
+    <span class="text-fg">devflow run</span>
+    <span class="inline-block h-3 w-1.5 animate-pulse bg-accent-cyan"></span>
+  </p>
+</div>

@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import Monitor from "@lucide/astro/icons/monitor";
+import Server from "@lucide/astro/icons/server";
+import Cloud from "@lucide/astro/icons/cloud";
+import Sparkles from "@lucide/astro/icons/sparkles";
+import Reveal from "../ui/Reveal.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Badge from "../ui/Badge.astro";
+
+const categories = await getCollection("skills");
+
+const iconMap: Record<string, typeof Monitor> = {
+  monitor: Monitor,
+  server: Server,
+  cloud: Cloud,
+  sparkles: Sparkles,
+};
+---
+
+<section id="skills" class="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-28">
+  <Reveal>
+    <SectionHeading
+      eyebrow="Skills"
+      title="Tools I use to build products."
+      subtitle="A practical stack chosen for shipping — not a collection of logos."
+    />
+  </Reveal>
+
+  <div class="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    {
+      categories.map((category, i) => {
+        const Icon = iconMap[category.data.icon] ?? Monitor;
+        return (
+          <Reveal delay={i * 80}>
+            <div class="group h-full rounded-xl border border-line bg-surface/70 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_8px_40px_-12px_var(--color-glow)]">
+              <div class="flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-accent transition-colors duration-200 group-hover:border-accent/40 group-hover:text-accent-cyan">
+                  <Icon size={17} stroke-width={1.75} />
+                </span>
+                <p class="font-mono text-[11px] tracking-[0.18em] text-fg-muted uppercase">
+                  {category.data.category}
+                </p>
+              </div>
+
+              <ul class="mt-5 space-y-2.5">
+                {category.data.items.map((item) => (
+                  <li class="flex items-center justify-between gap-2">
+                    <span class="text-sm text-fg">{item.name}</span>
+                    <span class="flex items-center gap-2">
+                      {item.years !== undefined && (
+                        <span class="font-mono text-[10px] text-fg-muted">{item.years}y</span>
+                      )}
+                      <Badge tone={item.meta === "primary" ? "accent" : "default"}>
+                        {item.meta}
+                      </Badge>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        );
+      })
+    }
+  </div>
+</section>

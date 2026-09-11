@@ -1,0 +1,30 @@
+---
+import { cn } from "../../lib/utils";
+
+interface Props {
+  tone?: "green" | "blue";
+  label?: string;
+  class?: string;
+}
+
+const { tone = "green", label = "Status: active", class: className } = Astro.props;
+
+const tones = {
+  green: "bg-emerald-400",
+  blue: "bg-accent",
+};
+---
+
+<span
+  role="img"
+  aria-label={label}
+  class={cn("relative inline-flex h-2 w-2", className)}
+>
+  <span
+    aria-hidden="true"
+    class:list={[tones[tone], "absolute inset-0 rounded-full opacity-60 [animation-duration:2.4s] animate-ping"]}
+  >
+  </span>
+  <span aria-hidden="true" class:list={[tones[tone], "relative inline-flex h-2 w-2 rounded-full"]}>
+  </span>
+</span>

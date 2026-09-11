@@ -1,0 +1,62 @@
+---
+import { cn } from "../../../lib/utils";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const stats = [
+  { label: "Users", value: "48.2k" },
+  { label: "Retention", value: "92%" },
+  { label: "Events/s", value: "12.4k" },
+];
+---
+
+<div aria-hidden="true" class={cn("flex h-full flex-col gap-2 p-3", className)}>
+  <div class="flex gap-2">
+    {
+      stats.map((s) => (
+        <div class="flex-1 rounded-md border border-line bg-white/[0.03] px-2 py-1.5">
+          <p class="font-mono text-[7px] tracking-wider text-fg-muted uppercase">{s.label}</p>
+          <p class="font-mono text-[11px] text-accent-cyan">{s.value}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="relative min-h-0 flex-1 rounded-md border border-line bg-white/[0.02] p-2">
+    <svg viewBox="0 0 200 64" class="h-full w-full" fill="none" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="pulse-area" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3B82F6" stop-opacity="0.35"></stop>
+          <stop offset="1" stop-color="#3B82F6" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        d="M0 48 25 42 50 46 75 30 100 34 125 20 150 26 175 12 200 16 V64 H0 Z"
+        fill="url(#pulse-area)"></path>
+      <polyline
+        points="0,48 25,42 50,46 75,30 100,34 125,20 150,26 175,12 200,16"
+        stroke="#22D3EE"
+        stroke-width="1.5"></polyline>
+      <polyline
+        points="0,56 25,52 50,55 75,48 100,50 125,44 150,46 175,38 200,42"
+        stroke="#3B82F6"
+        stroke-width="1"
+        opacity="0.5"></polyline>
+    </svg>
+  </div>
+
+  <div class="flex h-8 gap-1 items-end px-1" aria-hidden="true">
+    {
+      [40, 65, 50, 80, 60, 95, 70, 85, 55, 90, 75, 60].map((h, i) => (
+        <span
+          class="flex-1 rounded-sm bg-accent/40"
+          style={`height:${h}%;${i === 5 ? "background:var(--color-accent-cyan);" : ""}`}
+        />
+      ))
+    }
+  </div>
+</div>

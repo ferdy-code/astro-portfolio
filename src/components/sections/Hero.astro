@@ -1,0 +1,65 @@
+---
+import ChevronDown from "@lucide/astro/icons/chevron-down";
+import Button from "../ui/Button.astro";
+import Reveal from "../ui/Reveal.astro";
+import StatusDot from "../visuals/StatusDot.astro";
+import PortraitScene from "../visuals/PortraitScene.astro";
+---
+
+<section class="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-28 pb-20">
+  <div class="grid items-center gap-16 lg:grid-cols-2">
+    <div>
+      <Reveal>
+        <p class="font-mono text-xs font-medium tracking-[0.25em] text-accent-cyan uppercase">
+          Solo Product Engineer
+        </p>
+      </Reveal>
+
+      <Reveal delay={80}>
+        <h1
+          class="mt-5 font-heading leading-[1.05] font-semibold tracking-tight text-balance text-fg text-[clamp(2.75rem,6.5vw,4.5rem)]"
+        >
+          I turn ideas into <span class="text-gradient">products</span>.
+        </h1>
+      </Reveal>
+
+      <Reveal delay={140}>
+        <p class="mt-6 max-w-lg text-lg leading-relaxed text-pretty text-fg-muted">
+          I&apos;m Alex Morgan — an independent product engineer who takes products from first
+          sketch to shipped. Design, architecture, and code, handled end to end.
+        </p>
+      </Reveal>
+
+      <Reveal delay={200}>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="#projects">View Projects</Button>
+          <Button href="#contact" variant="ghost">Let&apos;s Talk</Button>
+        </div>
+      </Reveal>
+
+      <Reveal delay={260}>
+        <div
+          class="mt-9 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 backdrop-blur"
+        >
+          <StatusDot label="Available for selected projects" />
+          <span class="font-mono text-[11px] tracking-wide text-fg-muted">
+            Available for selected projects
+          </span>
+        </div>
+      </Reveal>
+    </div>
+
+    <Reveal delay={200} class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <PortraitScene />
+    </Reveal>
+  </div>
+
+  <a
+    href="#about"
+    aria-label="Scroll to About section"
+    class="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 text-fg-muted transition-colors hover:text-fg md:flex"
+  >
+    <span class="font-mono text-[9px] tracking-[0.25em] uppercase">Scroll</span>
+    <ChevronDown size={14} class="animate-float" />
+  </a>
+</section>

@@ -1,0 +1,67 @@
+---
+import Reveal from "../ui/Reveal.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Understand",
+    description: "Dig into the problem, the users, and the constraints before touching a keyboard.",
+  },
+  {
+    number: "02",
+    title: "Design",
+    description: "Shape the system — flows, architecture, and interface in tight feedback loops.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    description: "Ship vertical slices early. Instrument everything, keep quality non-negotiable.",
+  },
+  {
+    number: "04",
+    title: "Ship",
+    description: "Release, measure, and iterate. Momentum beats perfection, every time.",
+  },
+];
+---
+
+<section class="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
+  <Reveal>
+    <SectionHeading
+      eyebrow="Process"
+      title="How I build."
+      subtitle="The same loop, whether it's a two-week prototype or a product that runs for years."
+    />
+  </Reveal>
+
+  <ol class="relative mt-16 grid gap-12 lg:grid-cols-4 lg:gap-8">
+    <div
+      aria-hidden="true"
+      class="absolute top-2 bottom-2 left-[7.5px] w-px bg-gradient-to-b from-accent/40 via-accent-cyan/30 to-transparent lg:top-[7.5px] lg:bottom-auto lg:left-2 lg:right-2 lg:h-px lg:w-auto lg:bg-gradient-to-r"
+    >
+    </div>
+
+    {
+      steps.map((step, i) => (
+        <li class="relative">
+          <Reveal delay={i * 100}>
+            <span
+              aria-hidden="true"
+              class="absolute top-1 left-0 h-4 w-4 rounded-full border border-accent/50 bg-ink shadow-[0_0_14px_var(--color-glow)] lg:static lg:mb-5 lg:block"
+            />
+            <div class="pl-10 lg:pl-0">
+              <p class="font-mono text-xs tracking-[0.2em] text-accent-cyan">{step.number}</p>
+              <h3 class="mt-2 font-heading text-xl font-semibold tracking-tight text-fg">
+                {step.title}
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-pretty text-fg-muted">
+                {step.description}
+              </p>
+            </div>
+          </Reveal>
+        </li>
+      ))
+    }
+  </ol>
+</section>

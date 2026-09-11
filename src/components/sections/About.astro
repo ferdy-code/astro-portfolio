@@ -1,0 +1,106 @@
+---
+import Reveal from "../ui/Reveal.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const stats = [
+  { value: 5, suffix: "+", label: "Years experience" },
+  { value: 20, suffix: "+", label: "Projects shipped" },
+  { value: 12, suffix: "", label: "Products launched" },
+  { value: 100, suffix: "%", label: "Independent" },
+];
+---
+
+<section id="about" class="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-28">
+  <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <div class="lg:sticky lg:top-32 lg:self-start">
+      <Reveal>
+        <SectionHeading eyebrow="About" title="Building products, not just writing code." />
+      </Reveal>
+    </div>
+
+    <div>
+      <Reveal delay={80}>
+        <p class="text-lg leading-relaxed text-pretty text-fg">
+          I&apos;m an independent developer who owns the whole path — idea, design, architecture,
+          ship. No hand-offs, no translation loss between disciplines.
+        </p>
+      </Reveal>
+      <Reveal delay={140}>
+        <p class="mt-5 leading-relaxed text-pretty text-fg-muted">
+          Over the last five years I&apos;ve worked with startups and studios to turn ambiguous
+          problems into focused, working software. I care about the unglamorous parts —
+          performance, accessibility, edge cases — because that&apos;s what makes products feel
+          effortless.
+        </p>
+      </Reveal>
+      <Reveal delay={200}>
+        <p class="mt-5 leading-relaxed text-pretty text-fg-muted">
+          When a product ships, I want the code, the interface, and the decisions behind it to all
+          say the same thing.
+        </p>
+      </Reveal>
+
+      <div class="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        {
+          stats.map((stat, i) => (
+            <Reveal delay={100 + i * 80}>
+              <p class="bg-gradient-to-b from-fg to-fg-muted bg-clip-text font-heading text-4xl font-semibold tracking-tight text-transparent">
+                <span data-count={stat.value} data-suffix={stat.suffix}>
+                  0{stat.suffix}
+                </span>
+              </p>
+              <p class="mt-2 text-sm text-fg-muted">{stat.label}</p>
+            </Reveal>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initCountUp() {
+    const els = document.querySelectorAll<HTMLElement>("[data-count]:not([data-count-bound])");
+    if (els.length === 0) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const animate = (el: HTMLElement) => {
+      el.dataset.countBound = "true";
+      const target = Number(el.dataset.count ?? "0");
+      const suffix = el.dataset.suffix ?? "";
+
+      if (reduced || Number.isNaN(target)) {
+        el.textContent = `${target}${suffix}`;
+        return;
+      }
+
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = `${Math.round(target * eased)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries, observer) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            animate(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    els.forEach((el) => io.observe(el));
+  }
+
+  initCountUp();
+  document.addEventListener("astro:after-swap", initCountUp);
+</script>

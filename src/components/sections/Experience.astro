@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Reveal from "../ui/Reveal.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Card from "../ui/Card.astro";
+
+const entries = (await getCollection("experience")).sort((a, b) =>
+  b.id.localeCompare(a.id)
+);
+---
+
+<section id="experience" class="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-28">
+  <Reveal>
+    <SectionHeading
+      eyebrow="Experience"
+      title="A track record of shipping."
+      subtitle="Roles where ownership mattered more than titles."
+    />
+  </Reveal>
+
+  <div class="relative mt-14 space-y-6">
+    <div aria-hidden="true" class="absolute top-2 bottom-2 left-[4.5px] w-px bg-gradient-to-b from-accent/40 via-line to-transparent"></div>
+
+    {
+      entries.map((entry, i) => (
+        <Reveal delay={i * 80}>
+          <div class="relative pl-8">
+            <span
+              aria-hidden="true"
+              class="absolute top-8 left-0 h-2.5 w-2.5 rounded-full border border-accent/60 bg-ink"
+            />
+            <Card hoverable class="p-6 sm:p-7">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <h3 class="font-heading text-lg font-semibold tracking-tight text-fg">
+                    {entry.data.role}
+                  </h3>
+                  <p class="mt-0.5 text-sm text-accent-cyan">{entry.data.company}</p>
+                </div>
+                <div class="text-right font-mono text-[11px] tracking-wide text-fg-muted">
+                  <p>{entry.data.period}</p>
+                  <p class="mt-0.5">{entry.data.location}</p>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-pretty text-fg-muted">
+                {entry.data.description}
+              </p>
+            </Card>
+          </div>
+        </Reveal>
+      ))
+    }
+  </div>
+</section>

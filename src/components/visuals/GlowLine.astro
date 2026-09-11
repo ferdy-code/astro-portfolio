@@ -1,0 +1,33 @@
+---
+import { cn } from "../../lib/utils";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div aria-hidden="true" class={cn("glow-line relative h-px w-full", className)}>
+</div>
+
+<style>
+  .glow-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent) 30%,
+      var(--color-accent-cyan) 70%,
+      transparent
+    );
+  }
+
+  .glow-line::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(6px);
+    opacity: 0.5;
+  }
+</style>

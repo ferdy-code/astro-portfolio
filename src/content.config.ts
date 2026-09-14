@@ -9,7 +9,8 @@ const projects = defineCollection({
     number: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    github: z.url(),
+    status: z.string(),
+    github: z.url().optional(),
     gradient: z.string(),
     order: z.number().default(99),
   }),
@@ -19,9 +20,9 @@ const experience = defineCollection({
   loader: file("./src/content/experience.json"),
   schema: z.object({
     role: z.string(),
-    company: z.string(),
-    period: z.string(),
-    location: z.string(),
+    company: z.string().optional(),
+    period: z.string().optional(),
+    location: z.string().optional(),
     description: z.string(),
   }),
 });
@@ -34,7 +35,7 @@ const skills = defineCollection({
     items: z.array(
       z.object({
         name: z.string(),
-        meta: z.enum(["primary", "exploring"]),
+        meta: z.enum(["primary", "growing"]),
         years: z.number().optional(),
       })
     ),

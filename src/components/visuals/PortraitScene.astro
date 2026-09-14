@@ -43,7 +43,7 @@ import TechTag from "../ui/TechTag.astro";
   </GlassPanel>
 
   <GlassPanel class="absolute -right-2 top-1/4 w-36 animate-float-slow p-3 sm:-right-6" style="animation-delay:-3s;">
-    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">Architecture</p>
+    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">RAG Pipeline</p>
     <div class="mt-2 flex items-center gap-1.5">
       <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
       <span class="h-px flex-1 bg-accent/30"></span>
@@ -52,12 +52,12 @@ import TechTag from "../ui/TechTag.astro";
       <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
     </div>
     <div class="mt-2 flex justify-between font-mono text-[8px] tracking-wider text-fg-muted uppercase">
-      <span>api</span><span>queue</span><span>db</span>
+      <span>embed</span><span>retrieve</span><span>answer</span>
     </div>
   </GlassPanel>
 
   <GlassPanel class="absolute bottom-16 -left-2 w-40 animate-float-slow p-3 sm:-left-6" style="animation-delay:-1.5s;">
-    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">Deploys / wk</p>
+    <p class="font-mono text-[9px] tracking-[0.18em] text-fg-muted uppercase">Outside the day job</p>
     <svg viewBox="0 0 120 32" class="mt-1.5 h-8 w-full" fill="none" preserveAspectRatio="none">
       <polyline
         points="0,26 15,24 30,25 45,18 60,20 75,12 90,14 105,7 120,9"
@@ -74,15 +74,16 @@ import TechTag from "../ui/TechTag.astro";
         </linearGradient>
       </defs>
     </svg>
-    <p class="mt-1 font-mono text-[10px] text-accent-cyan">+124%</p>
+    <p class="mt-1 font-mono text-[10px] text-accent-cyan">5–10 hrs/wk shipping</p>
   </GlassPanel>
 
   <GlassPanel class="absolute -bottom-4 right-4 animate-float p-3" style="animation-delay:-5s;">
-    <div class="grid grid-cols-2 gap-1.5">
+    <div class="flex flex-wrap gap-1.5">
+      <TechTag class="!text-[9px]">Vue</TechTag>
+      <TechTag class="!text-[9px]">Nuxt</TechTag>
       <TechTag class="!text-[9px]">TypeScript</TechTag>
-      <TechTag class="!text-[9px]">React</TechTag>
-      <TechTag class="!text-[9px]">Node.js</TechTag>
-      <TechTag class="!text-[9px]">PostgreSQL</TechTag>
+      <TechTag class="!text-[9px]">Next.js</TechTag>
+      <TechTag class="!text-[9px]">Claude API</TechTag>
     </div>
   </GlassPanel>
 </div>

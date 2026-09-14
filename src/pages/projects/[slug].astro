@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import TechTag from "../../components/ui/TechTag.astro";
 import SocialIcon from "../../components/ui/SocialIcon.astro";
 import GlowLine from "../../components/visuals/GlowLine.astro";
+import StatusDot from "../../components/visuals/StatusDot.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -18,7 +19,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${entry.data.title} — Case Study · Alex Morgan`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} — Case Study · Ferdy`} description={entry.data.description}>
   <main id="main" class="relative mx-auto max-w-3xl px-6 pt-32 pb-24">
     <a
       href="/#projects"
@@ -43,13 +44,20 @@ const { Content } = await render(entry);
         {entry.data.tags.map((tag) => <TechTag>{tag}</TechTag>)}
       </div>
 
-      <div class="mt-6">
-        <SocialIcon
-          name="github"
-          label={`${entry.data.title} on GitHub`}
-          href={entry.data.github}
-        />
-      </div>
+      <p class="mt-6 inline-flex items-center gap-2 font-mono text-[11px] tracking-wide text-fg-muted">
+        <StatusDot label={entry.data.status} />
+        {entry.data.status}
+      </p>
+
+      {entry.data.github && (
+        <div class="mt-6">
+          <SocialIcon
+            name="github"
+            label={`${entry.data.title} on GitHub`}
+            href={entry.data.github}
+          />
+        </div>
+      )}
 
       <div class="mt-12">
         <GlowLine />

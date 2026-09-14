@@ -13,8 +13,8 @@ const entries = (await getCollection("experience")).sort((a, b) =>
   <Reveal>
     <SectionHeading
       eyebrow="Experience"
-      title="A track record of shipping."
-      subtitle="Roles where ownership mattered more than titles."
+      title="Where I work now."
+      subtitle="The day job that pays the bills, plus what I'm building outside it."
     />
   </Reveal>
 
@@ -35,12 +35,16 @@ const entries = (await getCollection("experience")).sort((a, b) =>
                   <h3 class="font-heading text-lg font-semibold tracking-tight text-fg">
                     {entry.data.role}
                   </h3>
-                  <p class="mt-0.5 text-sm text-accent-cyan">{entry.data.company}</p>
+                  {entry.data.company && (
+                    <p class="mt-0.5 text-sm text-accent-cyan">{entry.data.company}</p>
+                  )}
                 </div>
-                <div class="text-right font-mono text-[11px] tracking-wide text-fg-muted">
-                  <p>{entry.data.period}</p>
-                  <p class="mt-0.5">{entry.data.location}</p>
-                </div>
+                {(entry.data.period || entry.data.location) && (
+                  <div class="text-right font-mono text-[11px] tracking-wide text-fg-muted">
+                    {entry.data.period && <p>{entry.data.period}</p>}
+                    {entry.data.location && <p class="mt-0.5">{entry.data.location}</p>}
+                  </div>
+                )}
               </div>
               <p class="mt-4 text-sm leading-relaxed text-pretty text-fg-muted">
                 {entry.data.description}

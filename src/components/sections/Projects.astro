@@ -5,18 +5,19 @@ import Reveal from "../ui/Reveal.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import TechTag from "../ui/TechTag.astro";
 import SocialIcon from "../ui/SocialIcon.astro";
-import FlowboardPreview from "../visuals/previews/FlowboardPreview.astro";
-import PulsePreview from "../visuals/previews/PulsePreview.astro";
-import DevFlowPreview from "../visuals/previews/DevFlowPreview.astro";
-import LaunchKitPreview from "../visuals/previews/LaunchKitPreview.astro";
+import StatusDot from "../visuals/StatusDot.astro";
+import InvoicePreview from "../visuals/previews/InvoicePreview.astro";
+import RagPreview from "../visuals/previews/RagPreview.astro";
+import AgentsPreview from "../visuals/previews/AgentsPreview.astro";
+import PresensiPreview from "../visuals/previews/PresensiPreview.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 
-const previews: Record<string, typeof FlowboardPreview> = {
-  flowboard: FlowboardPreview,
-  "pulse-analytics": PulsePreview,
-  devflow: DevFlowPreview,
-  launchkit: LaunchKitPreview,
+const previews: Record<string, typeof InvoicePreview> = {
+  invoicekit: InvoicePreview,
+  "rag-assistant": RagPreview,
+  "ai-agents": AgentsPreview,
+  presensi: PresensiPreview,
 };
 ---
 
@@ -24,8 +25,8 @@ const previews: Record<string, typeof FlowboardPreview> = {
   <Reveal>
     <SectionHeading
       eyebrow="Selected Work"
-      title="Projects that shipped."
-      subtitle="A few things I've designed, built, and maintained end to end."
+      title="What I'm building."
+      subtitle="A mix of shipped, in-progress, and in-planning — status labeled honestly."
     />
   </Reveal>
 
@@ -52,6 +53,11 @@ const previews: Record<string, typeof FlowboardPreview> = {
                   ))}
                 </div>
 
+                <p class="mt-4 inline-flex items-center gap-2 font-mono text-[11px] tracking-wide text-fg-muted">
+                  <StatusDot label={project.data.status} />
+                  {project.data.status}
+                </p>
+
                 <div class="mt-7 flex items-center gap-5">
                   <a
                     href={`/projects/${project.id}`}
@@ -60,12 +66,14 @@ const previews: Record<string, typeof FlowboardPreview> = {
                     View Case Study
                     <ArrowRight size={15} class="transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
-                  <SocialIcon
-                    name="github"
-                    label={`${project.data.title} on GitHub`}
-                    href={project.data.github}
-                    class="h-8 w-8"
-                  />
+                  {project.data.github && (
+                    <SocialIcon
+                      name="github"
+                      label={`${project.data.title} on GitHub`}
+                      href={project.data.github}
+                      class="h-8 w-8"
+                    />
+                  )}
                 </div>
               </div>
 

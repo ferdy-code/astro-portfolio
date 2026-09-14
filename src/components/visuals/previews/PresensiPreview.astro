@@ -1,0 +1,32 @@
+---
+import { cn } from "../../../lib/utils";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div aria-hidden="true" class={cn("relative flex h-full items-center justify-center p-3", className)}>
+  <div class="relative h-full max-h-40 w-24 rounded-2xl border border-line bg-white/[0.02] p-2">
+    <div class="mx-auto h-1 w-6 rounded-full bg-white/15"></div>
+
+    <div class="mt-4 flex flex-col items-center gap-2">
+      <span class="h-1 w-14 rounded-full bg-white/15"></span>
+      <span class="h-1 w-10 rounded-full bg-white/10"></span>
+
+      <div class="mt-2 flex h-10 w-10 items-center justify-center rounded-full border border-accent/40 bg-accent/10 shadow-[0_0_16px_var(--color-glow)]">
+        <span class="h-3 w-3 rounded-full bg-accent-cyan"></span>
+      </div>
+      <span class="font-mono text-[7px] tracking-wider text-fg-muted uppercase">Check in</span>
+    </div>
+
+    <div class="absolute -right-6 top-6 w-24 rounded-md border border-line bg-surface/95 p-1.5 shadow-[0_8px_24px_-8px_var(--color-glow)] sm:-right-10">
+      <p class="flex items-center gap-1.5 font-mono text-[7px] text-fg-muted">
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"></span>
+        Attendance recorded
+      </p>
+    </div>
+  </div>
+</div>

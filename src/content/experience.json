@@ -1,26 +1,23 @@
 [
   {
-    "id": "novastream",
-    "role": "Senior Product Engineer",
-    "company": "NovaStream",
-    "period": "2022 — Present",
-    "location": "Remote",
-    "description": "Leading product engineering for a streaming analytics platform — owning architecture from realtime ingestion to the dashboard experience, and shipping features used by 40k+ daily viewers."
+    "id": "1",
+    "role": "Engineer On Site",
+    "company": "PT. Hipernet Technologies",
+    "period": "Aug 2018 - Oct 2021",
+    "description": "Work as Engineer On Site"
   },
   {
-    "id": "pixelworks",
-    "role": "Product Engineer",
-    "company": "Pixelworks Studio",
-    "period": "2020 — 2022",
-    "location": "Berlin, DE",
-    "description": "Built client products end-to-end at a digital studio — design systems, marketing sites, and full SaaS applications for startups across fintech and health."
+    "id": "2",
+    "role": "Engineer On Site",
+    "company": "PT. Melvar Prima Solusi",
+    "period": "Dec 2021 - Aug 2022",
+    "description": "Work as Engineer On Site"
   },
   {
-    "id": "brightlabs",
-    "role": "Frontend Engineer",
-    "company": "BrightLabs",
-    "period": "2018 — 2020",
-    "location": "Amsterdam, NL",
-    "description": "First engineering hire. Turned prototypes into a production design system and shipped the customer portal that carried the product to its first 10k users."
+    "id": "3",
+    "role": "Front-End Developer",
+    "company": "PT. Velocite Technology",
+    "period": "Aug 2022 - Present",
+    "description": "Full-time front-end development in Vue.js and Nuxt.js. Building toward full-stack and AI-integrated work on the side."
   }
 ]

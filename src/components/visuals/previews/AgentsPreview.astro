@@ -7,10 +7,11 @@ interface Props {
 
 const { class: className } = Astro.props;
 
-const lines = [
-  { dot: "bg-emerald-400", text: "build", detail: "completed in 1.2s" },
-  { dot: "bg-emerald-400", text: "test", detail: "42 passed, 0 failed" },
-  { dot: "bg-accent-cyan", text: "deploy", detail: "pushing to edge…" },
+const agents = [
+  { name: "Kuma", role: "Japanese tutor" },
+  { name: "Coach Rex", role: "English/IELTS" },
+  { name: "Coach Titan", role: "Fitness coach" },
+  { name: "Sora", role: "Social media" },
 ];
 ---
 
@@ -19,16 +20,16 @@ const lines = [
     <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
     <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
     <span class="h-1.5 w-1.5 rounded-full bg-white/20"></span>
-    <span class="ml-2 text-fg-muted">devflow — deploy.yaml</span>
+    <span class="ml-2 text-fg-muted">agents — telegram</span>
   </div>
 
   <div class="mt-2 flex-1 space-y-1.5">
     {
-      lines.map((line) => (
+      agents.map((agent) => (
         <p class="flex items-center gap-2">
-          <span class:list={["h-1.5 w-1.5 shrink-0 rounded-full", line.dot]} />
-          <span class="text-fg">[{line.text}]</span>
-          <span class="text-fg-muted">{line.detail}</span>
+          <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+          <span class="text-fg">{agent.name}</span>
+          <span class="text-fg-muted">{agent.role}</span>
         </p>
       ))
     }
@@ -36,7 +37,7 @@ const lines = [
 
   <p class="flex items-center gap-2 border-t border-line pt-2">
     <span class="text-accent-cyan">➜</span>
-    <span class="text-fg">devflow run</span>
+    <span class="text-fg">4 agents online</span>
     <span class="inline-block h-3 w-1.5 animate-pulse bg-accent-cyan"></span>
   </p>
 </div>

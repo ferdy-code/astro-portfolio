@@ -2,9 +2,9 @@
 import Button from "../ui/Button.astro";
 
 const links = [
+  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
@@ -15,9 +15,9 @@ const links = [
     <a href="#top" class="flex items-baseline gap-2.5">
       <span class="font-heading text-base font-semibold tracking-tight text-fg">Ferdy</span>
       <span
-        class="hidden font-mono text-[11px] tracking-[0.18em] text-fg-muted uppercase sm:inline"
+        class="hidden font-mono text-xs text-fg-muted sm:inline"
       >
-        AI-Powered Fullstack Developer
+        Fullstack developer · Indonesia
       </span>
     </a>
 
@@ -32,7 +32,7 @@ const links = [
           </a>
         ))
       }
-      <Button href="#contact" size="sm">Let&apos;s Talk</Button>
+      <Button href="#contact" size="sm">Let&apos;s talk</Button>
     </nav>
 
     <button
@@ -41,7 +41,7 @@ const links = [
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle menu"
-      class="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-md border border-line bg-white/[0.02] lg:hidden"
+      class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-md border border-line bg-white/[0.02] lg:hidden"
     >
       <span class="menu-bar" aria-hidden="true"></span>
       <span class="menu-bar" aria-hidden="true"></span>
@@ -55,13 +55,13 @@ const links = [
           links.map((link) => (
             <a
               href={link.href}
-              class="rounded-lg px-3 py-2.5 text-sm text-fg-muted transition-colors hover:bg-white/5 hover:text-fg"
+              class="rounded-lg px-3 py-3 text-sm text-fg-muted transition-colors hover:bg-white/5 hover:text-fg"
             >
               {link.label}
             </a>
           ))
         }
-        <Button href="#contact" size="sm" class="mt-3 w-full">Let&apos;s Talk</Button>
+        <Button href="#contact" size="sm" class="mt-3 w-full">Let&apos;s talk</Button>
       </nav>
     </div>
   </div>

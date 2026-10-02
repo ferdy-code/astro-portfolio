@@ -10,41 +10,34 @@ import PortraitScene from "../visuals/PortraitScene.astro";
   <div class="grid items-center gap-16 lg:grid-cols-2">
     <div>
       <Reveal>
-        <p class="font-mono text-xs font-medium tracking-[0.25em] text-accent-cyan uppercase">
-          Fullstack Developer, AI-Powered
-        </p>
-      </Reveal>
-
-      <Reveal delay={80}>
         <h1
-          class="mt-5 font-heading leading-[1.05] font-semibold tracking-tight text-balance text-fg text-[clamp(2.75rem,6.5vw,4.5rem)]"
+          class="font-heading leading-[1.05] font-semibold tracking-tight text-balance text-fg text-[clamp(2.75rem,6.5vw,4.5rem)]"
         >
-          Fullstack development. <span class="text-gradient">AI-powered</span> by default.
+          Fullstack apps with <span class="text-gradient">RAG and agents</span> built in from the start.
         </h1>
       </Reveal>
 
-      <Reveal delay={140}>
+      <Reveal delay={80}>
         <p class="mt-6 max-w-lg text-lg leading-relaxed text-pretty text-fg-muted">
-          I&apos;m Ferdy — a fullstack developer based in Indonesia, working daily in Vue and
-          Nuxt, and building out React, Next.js, and LLM integration on the side. Claude and
-          RAG aren&apos;t an add-on to what I build — they&apos;re part of the stack from the
-          start.
+          I&apos;m Ferdy, a developer in Indonesia. At work I build front ends in Vue and Nuxt.
+          On my own projects I go fullstack: a RAG assistant for Indonesian documents, and four
+          AI agents running on Telegram.
         </p>
       </Reveal>
 
-      <Reveal delay={200}>
+      <Reveal delay={140}>
         <div class="mt-8 flex flex-wrap gap-3">
-          <Button href="#projects">View Projects</Button>
-          <Button href="#contact" variant="ghost">Let&apos;s Talk</Button>
+          <Button href="#projects">See what I&apos;m building</Button>
+          <Button href="#contact" variant="ghost">Let&apos;s talk</Button>
         </div>
       </Reveal>
 
-      <Reveal delay={260}>
+      <Reveal delay={200}>
         <div
-          class="mt-9 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 backdrop-blur"
+          class="mt-9 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-2"
         >
           <StatusDot label="Building in public" />
-          <span class="font-mono text-[11px] tracking-wide text-fg-muted">
+          <span class="font-mono text-xs text-fg-muted">
             Building in public
           </span>
         </div>
@@ -57,11 +50,11 @@ import PortraitScene from "../visuals/PortraitScene.astro";
   </div>
 
   <a
-    href="#about"
-    aria-label="Scroll to About section"
-    class="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 text-fg-muted transition-colors hover:text-fg md:flex"
+    href="#projects"
+    aria-label="Scroll to Projects section"
+    class="absolute bottom-7 left-1/2 hidden min-h-11 min-w-11 -translate-x-1/2 flex-col items-center justify-center gap-1 text-fg-muted transition-colors hover:text-fg md:flex"
   >
-    <span class="font-mono text-[9px] tracking-[0.25em] uppercase">Scroll</span>
+    <span class="font-mono text-xs">Scroll</span>
     <ChevronDown size={14} class="animate-float" />
   </a>
 </section>

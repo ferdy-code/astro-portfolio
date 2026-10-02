@@ -8,20 +8,20 @@ const principles = [
     number: "02",
     text: "**Depth over breadth.** Go deep on RAG and agents rather than spreading thin across every AI subfield.",
   },
-  { number: "03", text: "AI should **amplify** engineers, not replace them." },
+  { number: "03", text: "AI should take the busywork, so **engineers keep the judgment calls**." },
   {
     number: "04",
-    text: "Product work and personal brand should **reinforce each other**, not run as separate tracks.",
+    text: "Product work and personal brand should **feed each other**. Building in public is how I do that.",
   },
 ];
 
 const highlight = (text: string) =>
-  text.replace(/\*\*(.+?)\*\*/g, '<span class="text-gradient">$1</span>');
+  text.replace(/\*\*(.+?)\*\*/g, '<span class="text-fg">$1</span>');
 ---
 
 <section class="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
   <Reveal>
-    <SectionHeading eyebrow="Principles" title="What I believe." />
+    <SectionHeading eyebrow="Principles" title="How I work." />
   </Reveal>
 
   <div class="mt-6">
@@ -32,7 +32,7 @@ const highlight = (text: string) =>
             <div class="flex items-baseline gap-6 sm:gap-10">
               <span class="font-mono text-xs text-fg-muted">{principle.number}</span>
               <p
-                class="font-heading text-2xl leading-snug font-semibold tracking-tight text-balance text-fg sm:text-3xl lg:text-4xl"
+                class="font-heading text-2xl leading-snug font-semibold tracking-tight text-balance text-fg-muted sm:text-3xl lg:text-4xl"
                 set:html={highlight(principle.text)}
               />
             </div>

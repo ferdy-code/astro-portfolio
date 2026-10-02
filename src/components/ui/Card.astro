@@ -1,4 +1,6 @@
 ---
+import { cn } from "../../lib/utils";
+
 interface Props {
   hoverable?: boolean;
   class?: string;
@@ -9,12 +11,11 @@ const { hoverable = false, class: className, ...rest } = Astro.props;
 ---
 
 <div
-  class:list={[
-    "rounded-xl border border-line bg-surface/70 shadow-[0_1px_0_0_rgb(255_255_255/0.03)_inset]",
-    hoverable &&
-      "transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_8px_40px_-12px_var(--color-glow)]",
-    className,
-  ]}
+  class:list={cn(
+    "rounded-xl border border-line bg-surface/70",
+    hoverable && "transition-colors duration-200 hover:border-white/[0.16]",
+    className
+  )}
   {...rest}
 >
   <slot />

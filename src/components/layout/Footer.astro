@@ -2,8 +2,8 @@
 import StatusDot from "../visuals/StatusDot.astro";
 
 const links = [
-  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
@@ -14,8 +14,8 @@ const links = [
     <div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <p class="font-heading text-base font-semibold tracking-tight text-fg">Muhammad Ferdy Ardiansyah</p>
-        <p class="mt-1 font-mono text-[11px] tracking-[0.18em] text-fg-muted uppercase">
-          AI-Powered Fullstack Developer
+        <p class="mt-1 font-mono text-xs text-fg-muted">
+          Fullstack developer · Indonesia
         </p>
         <p class="mt-4 inline-flex items-center gap-2 text-sm text-fg-muted">
           <StatusDot label="Building in public" />
@@ -28,7 +28,7 @@ const links = [
           links.map((link) => (
             <a
               href={link.href}
-              class="text-sm text-fg-muted transition-colors duration-200 hover:text-fg"
+              class="inline-flex min-h-11 items-center text-sm text-fg-muted transition-colors duration-200 hover:text-fg"
             >
               {link.label}
             </a>

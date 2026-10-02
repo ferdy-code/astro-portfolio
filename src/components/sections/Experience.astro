@@ -13,13 +13,13 @@ const entries = (await getCollection("experience")).sort((a, b) =>
   <Reveal>
     <SectionHeading
       eyebrow="Experience"
-      title="Where I work now."
-      subtitle="The day job that pays the bills, plus what I'm building outside it."
+      title="Where I've worked."
+      subtitle="Engineer on site from 2018 to 2022, front-end developer since."
     />
   </Reveal>
 
   <div class="relative mt-14 space-y-6">
-    <div aria-hidden="true" class="absolute top-2 bottom-2 left-[4.5px] w-px bg-gradient-to-b from-accent/40 via-line to-transparent"></div>
+    <div aria-hidden="true" class="absolute top-2 bottom-2 left-[4.5px] w-px bg-line"></div>
 
     {
       entries.map((entry, i) => (
@@ -27,7 +27,7 @@ const entries = (await getCollection("experience")).sort((a, b) =>
           <div class="relative pl-8">
             <span
               aria-hidden="true"
-              class="absolute top-8 left-0 h-2.5 w-2.5 rounded-full border border-accent/60 bg-ink"
+              class="absolute top-8 left-0 h-2.5 w-2.5 rounded-full border border-fg-muted/50 bg-ink"
             />
             <Card hoverable class="p-6 sm:p-7">
               <div class="flex flex-wrap items-baseline justify-between gap-2">
@@ -36,11 +36,11 @@ const entries = (await getCollection("experience")).sort((a, b) =>
                     {entry.data.role}
                   </h3>
                   {entry.data.company && (
-                    <p class="mt-0.5 text-sm text-accent-cyan">{entry.data.company}</p>
+                    <p class="mt-0.5 text-sm text-fg-muted">{entry.data.company}</p>
                   )}
                 </div>
                 {(entry.data.period || entry.data.location) && (
-                  <div class="text-right font-mono text-[11px] tracking-wide text-fg-muted">
+                  <div class="text-right font-mono text-xs text-fg-muted">
                     {entry.data.period && <p>{entry.data.period}</p>}
                     {entry.data.location && <p class="mt-0.5">{entry.data.location}</p>}
                   </div>

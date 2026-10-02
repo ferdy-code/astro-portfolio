@@ -4,8 +4,8 @@ import SectionHeading from "../ui/SectionHeading.astro";
 
 const stats = [
   { value: 4, suffix: "", label: "AI agents live on Telegram" },
-  { display: "5–10", label: "Hours/week on side projects" },
-  { display: "Full-time", label: "Day job — Vue / Nuxt.js" },
+  { display: "5-10", label: "Hours a week on side projects" },
+  { display: "2022", label: "Writing Vue and Nuxt.js full-time since" },
 ];
 ---
 
@@ -13,31 +13,29 @@ const stats = [
   <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
     <div class="lg:sticky lg:top-32 lg:self-start">
       <Reveal>
-        <SectionHeading eyebrow="About" title="Building fullstack products, powered by AI." />
+        <SectionHeading eyebrow="About" title="A front-end developer moving into AI engineering." />
       </Reveal>
     </div>
 
     <div>
       <Reveal delay={80}>
         <p class="text-lg leading-relaxed text-pretty text-fg">
-          I work full-time as a front-end developer, primarily in Vue and Nuxt.js. Outside that,
-          I&apos;m pivoting toward AI Application Engineering — pairing that fullstack foundation
-          with LLM integration, retrieval, and agentic tooling using React, Next.js, TypeScript,
-          and the Claude API.
+          I work full-time as a front-end developer, mostly in Vue and Nuxt.js. Outside work
+          I&apos;m moving into AI application engineering: LLM integration, retrieval, and
+          agents, built with React, Next.js, TypeScript, and the Claude API.
         </p>
       </Reveal>
       <Reveal delay={140}>
         <p class="mt-5 leading-relaxed text-pretty text-fg-muted">
           I build in public: an invoicing tool for Indonesian freelancers, an AI resume builder,
-          a handful of self-hosted AI agents running on Telegram,
+          four self-hosted AI agents running on Telegram,
           and developer tooling that plugs coding agents straight into live documentation instead
           of letting them guess from stale training data.
         </p>
       </Reveal>
       <Reveal delay={200}>
         <p class="mt-5 leading-relaxed text-pretty text-fg-muted">
-          I want the product, the interface, and the AI behind it to work like one system — not
-          three things bolted together.
+          I want the product, the interface, and the AI behind it to work as one system.
         </p>
       </Reveal>
 

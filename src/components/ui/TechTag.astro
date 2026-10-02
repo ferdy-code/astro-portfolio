@@ -1,6 +1,5 @@
 ---
 import Badge from "./Badge.astro";
-import { cn } from "../../lib/utils";
 
 interface Props {
   class?: string;
@@ -10,6 +9,6 @@ interface Props {
 const { class: className, ...rest } = Astro.props;
 ---
 
-<Badge class={cn("uppercase", className)} {...rest}>
+<Badge class={className} {...rest}>
   <slot />
 </Badge>

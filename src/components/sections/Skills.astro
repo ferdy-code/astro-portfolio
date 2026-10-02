@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Monitor from "@lucide/astro/icons/monitor";
 import Server from "@lucide/astro/icons/server";
 import Cloud from "@lucide/astro/icons/cloud";
-import Sparkles from "@lucide/astro/icons/sparkles";
+import MessageSquareCode from "@lucide/astro/icons/message-square-code";
 import Reveal from "../ui/Reveal.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import Badge from "../ui/Badge.astro";
@@ -14,7 +14,7 @@ const iconMap: Record<string, typeof Monitor> = {
   monitor: Monitor,
   server: Server,
   cloud: Cloud,
-  sparkles: Sparkles,
+  "message-square-code": MessageSquareCode,
 };
 ---
 
@@ -23,7 +23,7 @@ const iconMap: Record<string, typeof Monitor> = {
     <SectionHeading
       eyebrow="Skills"
       title="Tools I use to build products."
-      subtitle="A practical stack — split between what pays the bills and what I'm actively growing into."
+      subtitle="Primary is what I use every day. Growing is what I'm still learning."
     />
   </Reveal>
 
@@ -33,12 +33,12 @@ const iconMap: Record<string, typeof Monitor> = {
         const Icon = iconMap[category.data.icon] ?? Monitor;
         return (
           <Reveal delay={i * 80}>
-            <div class="group h-full rounded-xl border border-line bg-surface/70 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_8px_40px_-12px_var(--color-glow)]">
+            <div class="h-full rounded-xl border border-line bg-surface/70 p-6">
               <div class="flex items-center gap-3">
-                <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-accent transition-colors duration-200 group-hover:border-accent/40 group-hover:text-accent-cyan">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-fg-muted">
                   <Icon size={17} stroke-width={1.75} />
                 </span>
-                <p class="font-mono text-[11px] tracking-[0.18em] text-fg-muted uppercase">
+                <p class="font-mono text-xs text-fg-muted">
                   {category.data.category}
                 </p>
               </div>

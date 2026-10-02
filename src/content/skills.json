@@ -2,7 +2,7 @@
   {
     "id": "ai-llm-engineering",
     "category": "AI & LLM Engineering",
-    "icon": "sparkles",
+    "icon": "message-square-code",
     "items": [
       {
         "name": "Claude Code",

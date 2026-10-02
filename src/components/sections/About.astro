@@ -43,7 +43,7 @@ const stats = [
         {
           stats.map((stat, i) => (
             <Reveal delay={100 + i * 80}>
-              <p class="bg-gradient-to-b from-fg to-fg-muted bg-clip-text font-heading text-4xl font-semibold tracking-tight text-transparent">
+              <p class="font-heading text-4xl font-semibold tracking-tight text-accent">
                 {"value" in stat ? (
                   <span data-count={stat.value} data-suffix={stat.suffix}>
                     0{stat.suffix}

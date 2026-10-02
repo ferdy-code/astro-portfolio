@@ -27,7 +27,12 @@ const entries = (await getCollection("experience")).sort((a, b) =>
           <div class="relative pl-8">
             <span
               aria-hidden="true"
-              class="absolute top-8 left-0 h-2.5 w-2.5 rounded-full border border-fg-muted/50 bg-ink"
+              class:list={[
+                "absolute top-8 left-0 h-2.5 w-2.5 rounded-full border",
+                entry.data.period?.includes("Present")
+                  ? "border-accent bg-accent"
+                  : "border-fg-muted/50 bg-ink",
+              ]}
             />
             <Card hoverable class="p-6 sm:p-7">
               <div class="flex flex-wrap items-baseline justify-between gap-2">
@@ -36,7 +41,7 @@ const entries = (await getCollection("experience")).sort((a, b) =>
                     {entry.data.role}
                   </h3>
                   {entry.data.company && (
-                    <p class="mt-0.5 text-sm text-fg-muted">{entry.data.company}</p>
+                    <p class="mt-0.5 text-sm text-accent">{entry.data.company}</p>
                   )}
                 </div>
                 {(entry.data.period || entry.data.location) && (

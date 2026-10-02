@@ -26,19 +26,20 @@ All tokens live in `src/styles/global.css` under Tailwind 4's `@theme`, consumed
 | `--color-fg` | `#e8eaed` | Primary text, emphasized words |
 | `--color-fg-muted` | `#8b93a1` | Secondary text, labels, timeline markers (5.4:1 on surface, 5.8:1 on ink) |
 | `--color-line` | `rgb(255 255 255 / 0.08)` | 1px borders, timeline lines |
-| `--color-accent` | `#3b82f6` | Accent: focus ring, selection, small syntax highlights in previews |
+| `--color-accent` | `#3b82f6` | Primary blue: section labels, numbers, links, primary-skill badges, current job, hover borders, focus ring (5.35:1 on ink, 5.05:1 on surface, 4.83:1 on surface-2) |
 | `--color-accent-cyan` | `#22d3ee` | Second stop of the one gradient |
 | `--color-glow` | `rgb(59 130 246 / 0.15)` | Primary button hover only |
 
-**Why this palette:** dark because the site sits next to the tools it talks about (editors, terminals, Telegram bots). It reads as an engineer's workspace, not a "tech" costume. Blue/cyan is used once, as a gradient on the hero's "RAG and agents" and the primary CTA border, to mark the one idea the page is about. Everything else stays neutral so that moment lands.
+**Why this palette:** dark because the site sits next to the tools it talks about (editors, terminals, Telegram bots). It reads as an engineer's workspace, not a "tech" costume. Blue/cyan is used once, as a gradient on the hero's "RAG and agents" and the primary CTA border, to mark the one idea the page is about. Solid blue then carries through each section as the wayfinding color (labels, numbers, links), so the page reads as one system.
 
 **Background:** `GridBackground` (a fine 72px grid fading out from the top, plus three soft blue/cyan blobs) sits fixed behind every page. The owner kept it on 2026-10-03; it's the site's ambient layer, so don't stack more background effects on top.
 
 **Rules:**
 - The `text-gradient` utility is used only in the Hero headline. Don't add it elsewhere.
 - Glow (`--color-glow`) is used only on the primary `Button` hover.
-- Hover states on cards and icons change border to `white/16`. No colored borders, no shadows.
-- Emphasis inside text uses contrast (`fg` on `fg-muted`), not color (see Principles).
+- Solid blue (`text-accent`) marks things a reader scans for or acts on: section labels, project and principle numbers, About stat values, company names, "Read the case study" links, primary-skill badges, skill icons, the current job's timeline dot, Principles key phrases, and case-study markers and links. Body paragraphs and headings stay neutral.
+- Hover on cards, project cards, and social icons sets the border to `accent/40`. No shadows.
+- Blue is always solid; the gradient (blue to cyan) stays limited to the two places above.
 
 ### Typography
 
@@ -52,7 +53,7 @@ All tokens live in `src/styles/global.css` under Tailwind 4's `@theme`, consumed
 
 **Copy:** no em dashes in page text; use commas, colons, or periods.
 
-**Rules:** labels are sentence case at normal tracking (`font-mono text-xs`/`text-sm text-fg-muted`). No uppercase, wide-tracked eyebrows. Headline sizes use `clamp()`.
+**Rules:** labels are sentence case at normal tracking (`font-mono text-xs`/`text-sm`; section labels in `text-accent`). No uppercase, wide-tracked eyebrows. Headline sizes use `clamp()`.
 
 ### Radius & elevation
 
@@ -64,10 +65,10 @@ All tokens live in `src/styles/global.css` under Tailwind 4's `@theme`, consumed
 
 ### `ui/`
 - **Button**: `primary` (gradient border + hover glow, the page's one accent) and `ghost` (neutral). Sizes `sm`/`md` are 44px tall, `lg` is 48px. Renders `<a>` when `href` is set.
-- **Card**: solid `surface/70`, 1px line border. `hoverable` brightens the border only.
-- **Badge / TechTag**: mono, `rounded-md`, original casing. Badge `accent` tone = brighter neutral (marks "primary" skills).
+- **Card**: solid `surface/70`, 1px line border. `hoverable` turns the border blue (`accent/40`).
+- **Badge / TechTag**: mono, `rounded-md`, original casing. Badge `accent` tone = blue border and text, no fill (marks "primary" skills).
 - **SectionHeading**: mono sentence-case label, heading, optional subtitle.
-- **SocialIcon**: 44px icon link, neutral hover. Supports `github`, `linkedin`, `x`.
+- **SocialIcon**: 44px icon link, blue border and icon on hover. Supports `github`, `linkedin`, `threads` (paths from Simple Icons).
 - **Reveal**: one-shot IntersectionObserver fade/slide-up. Content stays visible without JS (`.js` gate) and under `prefers-reduced-motion`.
 
 ### `visuals/`

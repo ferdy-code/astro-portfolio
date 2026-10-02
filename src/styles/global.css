@@ -128,7 +128,7 @@
   width: 1.5rem;
   height: 1px;
   flex-shrink: 0;
-  background: var(--color-fg-muted);
+  background: var(--color-accent);
 }
 
 .case-study p {
@@ -162,11 +162,11 @@
   top: 0.65em;
   width: 0.5rem;
   height: 2px;
-  background: var(--color-fg-muted);
+  background: var(--color-accent);
 }
 
 .case-study a {
-  color: var(--color-fg);
+  color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

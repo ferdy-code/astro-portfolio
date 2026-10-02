@@ -13,7 +13,7 @@ const { hoverable = false, class: className, ...rest } = Astro.props;
 <div
   class:list={cn(
     "rounded-xl border border-line bg-surface/70",
-    hoverable && "transition-colors duration-200 hover:border-white/[0.16]",
+    hoverable && "transition-colors duration-200 hover:border-accent/40",
     className
   )}
   {...rest}

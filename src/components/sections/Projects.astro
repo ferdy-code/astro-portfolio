@@ -37,9 +37,9 @@ const previews: Record<string, typeof InvoicePreview> = {
         const reversed = i % 2 === 1;
         return (
           <Reveal delay={80}>
-            <article class="group grid items-center gap-8 rounded-2xl border border-line bg-surface/50 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-white/[0.16] sm:p-8 lg:grid-cols-2 lg:gap-12">
+            <article class="group grid items-center gap-8 rounded-2xl border border-line bg-surface/50 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 sm:p-8 lg:grid-cols-2 lg:gap-12">
               <div class:list={[reversed && "lg:order-2"]}>
-                <p class="font-mono text-sm text-fg-muted">{project.data.number}</p>
+                <p class="font-mono text-sm text-accent">{project.data.number}</p>
                 <h3 class="mt-2 font-heading text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
                   {project.data.title}
                 </h3>
@@ -61,7 +61,7 @@ const previews: Record<string, typeof InvoicePreview> = {
                 <div class="mt-7 flex items-center gap-5">
                   <a
                     href={`/projects/${project.id}`}
-                    class="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-fg underline-offset-4 hover:underline"
+                    class="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-accent underline-offset-4 hover:underline"
                   >
                     Read the case study
                     <ArrowRight size={15} class="transition-transform duration-200 group-hover:translate-x-0.5" />
